@@ -6,25 +6,29 @@ const __dirname = path.dirname(__filename);
 
 
 function createWindow() {
-  const win = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
     width: 350,
-    height: 350,
-    frame: false, 
-    resizable: true, 
-    maximizable: false,
+    height: 400,
+    minWidth: 300,
+    minHeight: 180,
+    maxWidth: 450,
+    maxHeight: 400,
+    resizable: true,
+    alwaysOnTop: true,
+    frame: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-    },
-    alwaysOnTop: true, 
-  });
-    win.setMenu(null); 
+      nodeIntegration: false,
+      contextIsolation: true
+    }
+    });
+    mainWindow.setMenu(null);
 
-  // isDeveloping? with using app.isPackaged
+  // isDeveloping? check with app.isPackaged
   const isDev = !app.isPackaged;
   if (isDev) {
-    win.loadURL('http://localhost:5173');
+    mainWindow.loadURL('http://localhost:5173');
   } else {
-    win.loadFile(path.join(__dirname, '../../dist/index.html'));
+    mainWindow.loadFile(path.join(__dirname, '../../dist/index.html'));
   }
 }
 

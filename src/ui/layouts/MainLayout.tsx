@@ -2,11 +2,11 @@ import ClassicClock from '../components/ClassicClock';
 import ModuleDropdown from '../components/ModuleDropdown';
 
 interface MainLayoutProps {
-  buttonColor: string;
+  colorIndex: number;
   onModuleSelect: (value: string) => void;
 }
 
-export default function MainLayout({ buttonColor, onModuleSelect }: MainLayoutProps) {
+export default function MainLayout({ colorIndex, onModuleSelect }: MainLayoutProps) {
   return (
     <div
       className="w-screen h-screen min-h-0 min-w-0 bg-[#23242a] flex flex-col items-center justify-center select-none relative"
@@ -22,7 +22,7 @@ export default function MainLayout({ buttonColor, onModuleSelect }: MainLayoutPr
           }}
         />
         <ModuleDropdown 
-          buttonColor={buttonColor} 
+          colorIndex={colorIndex} 
           onModuleSelect={onModuleSelect} 
         />
       </div>
