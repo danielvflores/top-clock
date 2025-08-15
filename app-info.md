@@ -29,11 +29,11 @@ top-clock/
 │   │   ├─ App.tsx        # Main React component
 │   │   ├─ components/    # Reusable React components
 │   │   ├─ hooks/         # Custom React hooks
-│   │   ├─ styles/        # Tailwind and global styles
+│   │   ├─ styles/        # Global styles
 │   │   └─ db/            # SQLite integration logic
 │   └─ types/             # Shared TypeScript types
 ├─ package.json           # Project metadata and scripts
-├─ tailwind.config.js     # TailwindCSS configuration
+<!-- Tailwind config removed -->
 ├─ tsconfig.json          # TypeScript configuration
 └─ README.md
 ```
