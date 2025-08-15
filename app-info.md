@@ -23,17 +23,15 @@ top-clock/
 │
 ├─ public/                # Static files (icons, index.html)
 ├─ src/
-│   ├─ main/              # Electron main process (Node.js)
-│   │   └─ main.ts        # Electron entry point
-│   ├─ renderer/          # React app (renderer process)
+│   ├─ UI/                # React app (renderer process)
 │   │   ├─ App.tsx        # Main React component
+│   │   ├─ main.tsx       # React entry point
+│   │   ├─ index.css      # Global styles
 │   │   ├─ components/    # Reusable React components
 │   │   ├─ hooks/         # Custom React hooks
-│   │   ├─ styles/        # Global styles
-│   │   └─ db/            # SQLite integration logic
+│   ├─ core/              # Business logic, state management, utilities
 │   └─ types/             # Shared TypeScript types
 ├─ package.json           # Project metadata and scripts
-<!-- Tailwind config removed -->
 ├─ tsconfig.json          # TypeScript configuration
 └─ README.md
 ```
