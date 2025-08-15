@@ -131,7 +131,7 @@ export default function StopwatchComponent({ colorIndex, onBack }: StopwatchComp
         {/* Lista de vueltas */}
         {laps.length > 0 && (
           <div 
-            className="w-full max-w-md bg-gray-800 rounded-lg p-4 max-h-64 overflow-y-auto"
+            className="w-full max-w-md bg-gray-800 rounded-lg p-4 max-h-64 overflow-y-auto custom-scrollbar"
             style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties & { WebkitAppRegion: string }}
           >
             <h3 className="text-white text-sm font-semibold mb-3">Vueltas</h3>
