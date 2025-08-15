@@ -20,7 +20,6 @@ export default function TimerComponent({ colorIndex, onBack }: TimerComponentPro
 
   const { remaining, state, start, pause, reset, isRunning, isPaused } = useTimer(duration, {
     onTimeUp: () => {
-      // Aquí puedes agregar notificación, sonido, etc.
       alert('¡Tiempo terminado!');
     }
   });

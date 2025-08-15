@@ -1,4 +1,3 @@
-// Base abstract para todos los time modules
 export abstract class TimeModule {
   protected _state: 'idle' | 'running' | 'paused' | 'finished' = 'idle';
   protected _startTime: number = 0;

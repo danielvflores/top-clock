@@ -24,7 +24,7 @@ export interface TimerSession extends DatabaseEntity {
   finishedAt?: Date;
   duration: TimeDisplay;
   completed: boolean;
-  pausedTime: number; // milliseconds paused
+  pausedTime: number;
 }
 
 export interface TimerEvents extends ModuleEvents {

@@ -15,7 +15,6 @@ export default function StopwatchComponent({ colorIndex, onBack }: StopwatchComp
   });
 
   const handleAddLap = () => {
-    // Solo agregar lap si está corriendo
     if (state === 'running' && isRunning) {
       addLap();
     }
@@ -128,7 +127,6 @@ export default function StopwatchComponent({ colorIndex, onBack }: StopwatchComp
           )}
         </div>
 
-        {/* Lista de vueltas */}
         {laps.length > 0 && (
           <div 
             className="w-full max-w-md bg-gray-800 rounded-lg p-4 max-h-64 overflow-y-auto custom-scrollbar"

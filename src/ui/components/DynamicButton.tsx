@@ -68,7 +68,6 @@ export default function DynamicButton({
   };
 
   const getVariantStyles = () => {
-    // Todos los botones usan el mismo color configurado por el usuario
     return {
       backgroundColor: colors.bg,
       color: 'white',
@@ -134,10 +133,8 @@ export default function DynamicButton({
         }
       }}
     >
-      {/* Ripple effect overlay */}
       <div className="absolute inset-0 bg-white opacity-0 group-active:opacity-20 transition-opacity duration-150 rounded-lg" />
       
-      {/* Icon and text content */}
       <div className="flex items-center gap-2 relative z-10">
         {renderIcon()}
         {children}

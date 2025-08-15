@@ -33,7 +33,6 @@ export default function ModuleDropdown({ colorIndex, onModuleSelect }: ModuleDro
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`p-2 rounded-lg transition-colors ${buttonColor.bg} ${buttonColor.hover}`}
@@ -54,7 +53,6 @@ export default function ModuleDropdown({ colorIndex, onModuleSelect }: ModuleDro
         </svg>
       </button>
 
-      {/* Dropdown Menu */}
       {isOpen && (
         <div className={`absolute top-full left-0 mt-2 ${buttonColor.bg} backdrop-blur-sm rounded-lg shadow-2xl border border-white/10 min-w-[140px] z-50`}>
           {menuItems.map((item) => (

@@ -3,7 +3,6 @@ import { TimerCore } from '../../core/timer/TimerCore';
 import type { TimeDisplay } from '../../types/common';
 import type { ITimeEventEmitter } from '../../core/base/interfaces';
 
-// EventEmitter para React
 class ReactEventEmitter implements ITimeEventEmitter {
   private listeners: Map<string, Set<(...args: unknown[]) => void>> = new Map();
 
@@ -40,19 +39,15 @@ export function useTimer(initialDuration: TimeDisplay, options: UseTimerOptions 
   const timerRef = useRef<TimerCore | null>(null);
   const eventEmitterRef = useRef<ReactEventEmitter>(new ReactEventEmitter());
   
-  // Refs para las opciones para evitar recrear el effect
   const onTimeUpRef = useRef(options.onTimeUp);
   const onTickRef = useRef(options.onTick);
   
-  // Actualizar refs cuando cambien las opciones
   onTimeUpRef.current = options.onTimeUp;
   onTickRef.current = options.onTick;
 
-  // Inicializar timer
   useEffect(() => {
     const eventEmitter = eventEmitterRef.current;
     
-    // Configurar event listeners
     const handleTick = (...args: unknown[]) => {
       const time = args[0] as TimeDisplay;
       setRemaining(time);
@@ -78,7 +73,6 @@ export function useTimer(initialDuration: TimeDisplay, options: UseTimerOptions 
     eventEmitter.on('reset', handleReset);
     eventEmitter.on('timeUp', handleTimeUp);
 
-    // Crear timer instance
     timerRef.current = new TimerCore(initialDuration, eventEmitter);
 
     return () => {

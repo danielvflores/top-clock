@@ -1,12 +1,12 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 function createWindow() {
-    const mainWindow = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 350,
     height: 400,
     minWidth: 300,
@@ -20,10 +20,9 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true
     }
-    });
-    mainWindow.setMenu(null);
+  });
+  mainWindow.setMenu(null);
 
-  // isDeveloping? check with app.isPackaged
   const isDev = !app.isPackaged;
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173');

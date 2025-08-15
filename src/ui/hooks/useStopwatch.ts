@@ -4,7 +4,6 @@ import type { StopwatchLap } from '../../types/stopwatch';
 import type { TimeDisplay } from '../../types/common';
 import type { ITimeEventEmitter } from '../../core/base/interfaces';
 
-// Reutilizamos el ReactEventEmitter
 class ReactEventEmitter implements ITimeEventEmitter {
   private listeners: Map<string, Set<(...args: unknown[]) => void>> = new Map();
 
@@ -44,19 +43,15 @@ export function useStopwatch(options: UseStopwatchOptions = {}) {
   const stopwatchRef = useRef<StopwatchCore | null>(null);
   const eventEmitterRef = useRef<ReactEventEmitter>(new ReactEventEmitter());
   
-  // Refs para las opciones para evitar recrear el effect
   const onLapRef = useRef(options.onLap);
   const onTickRef = useRef(options.onTick);
   
-  // Actualizar refs cuando cambien las opciones
   onLapRef.current = options.onLap;
   onTickRef.current = options.onTick;
 
-  // Inicializar stopwatch
   useEffect(() => {
     const eventEmitter = eventEmitterRef.current;
     
-    // Configurar event listeners
     const handleTick = (...args: unknown[]) => {
       const time = args[0] as TimeDisplay;
       setElapsed(time);
@@ -85,7 +80,6 @@ export function useStopwatch(options: UseStopwatchOptions = {}) {
     eventEmitter.on('stop', handleStop);
     eventEmitter.on('reset', handleReset);
 
-    // Crear stopwatch instance
     stopwatchRef.current = new StopwatchCore(eventEmitter);
 
     return () => {
@@ -116,7 +110,6 @@ export function useStopwatch(options: UseStopwatchOptions = {}) {
 
   const addLap = useCallback(() => {
     try {
-      // Solo agregar lap si está corriendo
       if (stopwatchRef.current && state === 'running') {
         return stopwatchRef.current?.addLap();
       }

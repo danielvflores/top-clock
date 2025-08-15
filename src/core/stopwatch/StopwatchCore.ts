@@ -1,22 +1,19 @@
-import type { Stopwatch, StopwatchLap } from '../../types/stopwatch';
+import type { StopwatchLap } from '../../types/stopwatch';
 import type { TimeDisplay } from '../../types/common';
 import { TimeModule } from '../base/TimeModule';
-import type { ITimeEventEmitter, ITimeRepository } from '../base/interfaces';
+import type { ITimeEventEmitter } from '../base/interfaces';
 
 export class StopwatchCore extends TimeModule {
   private _elapsed: TimeDisplay = { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 };
   private _laps: StopwatchLap[] = [];
   private _intervalId: NodeJS.Timeout | null = null;
   private eventEmitter?: ITimeEventEmitter;
-  private repository?: ITimeRepository<Stopwatch>;
   
   constructor(
-    eventEmitter?: ITimeEventEmitter,
-    repository?: ITimeRepository<Stopwatch>
+    eventEmitter?: ITimeEventEmitter
   ) {
     super();
     this.eventEmitter = eventEmitter;
-    this.repository = repository;
   }
 
   start(): void {
@@ -38,7 +35,6 @@ export class StopwatchCore extends TimeModule {
     this._pausedTime += this.getCurrentTime() - this._startTime;
     this.clearInterval();
     
-    // Emitir un tick final para actualizar la UI con el tiempo actual
     const totalElapsed = this._pausedTime;
     this._elapsed = this.msToTimeDisplay(totalElapsed);
     this.eventEmitter?.emit('tick', this._elapsed);

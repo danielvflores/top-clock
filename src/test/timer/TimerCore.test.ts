@@ -3,7 +3,6 @@ import { TimerCore } from '../../core/timer/TimerCore';
 import type { TimeDisplay } from '../../types/common';
 import type { ITimeEventEmitter } from '../../core/base/interfaces';
 
-// Mock del EventEmitter
 class MockEventEmitter implements ITimeEventEmitter {
   private events: Map<string, ((...args: unknown[]) => void)[]> = new Map();
 
